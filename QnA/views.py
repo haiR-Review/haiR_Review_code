@@ -1,4 +1,6 @@
 from django.shortcuts import render , redirect ,get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST, require_http_methods
 from .forms import QuestionForm, AnswerForm
 from main.forms import HashtagForm 
 from django.utils import timezone
@@ -8,12 +10,16 @@ from django.http import request
 # Create your views here.
 
 #질문 작성
-def q_write(request, qna = None):
+@login_required
+def q_write(request, qna = None  , hashtag = None):
+        if not request.user.is_authenticated:
+            return redirect('main')
         if request.method == 'POST':
             form = QuestionForm(request.POST, request.FILES,instance = qna)
             if form.is_valid():
                     qna = form.save(commit=False)
                     qna.q_date = timezone.now()
+                    qna.user = request.user
                     qna.save()
                     form.save_m2m()
                     return redirect('q_list')
@@ -26,20 +32,27 @@ def q_list(request):
     qnaobj = Question.objects
     q_sort = request.GET.get('q_sort','') #정렬
     if q_sort == 'q_clicks' :
-        qnaobj = Question.objects.all().order_by('-q_clicks','-q_date')
+        qnaobj = Question.objects.all().order_by('-q_clicks','-q_date' , 'q_like_count')#모델 오브젝트 templates에서 받고 싶은 요소만 추가
     else :
         qnaobj = Question.objects.all().order_by('-q_date')
     return render(request, 'q_list.html' , {'qnaobj':qnaobj, 'q_sort':q_sort})
 
 #질문글 상세페이지
+@login_required
 def q_detail(request, id):
+
+    if not request.user.is_authenticated:
+        return redirect('q_list')
+
     qna = get_object_or_404(Question, id=id)
+   
     if request.method == "POST" :
         form = AnswerForm(request.POST, request.FILES)
         if form.is_valid() :
             answer = form.save(commit = False)
             answer.qna_id = qna
             answer.text = form.cleaned_data['text']
+            answer.user = request.user
             answer.save()
             form.save_m2m()
             return redirect('q_detail' , id)
@@ -68,16 +81,16 @@ def q_delete(request, id):
 
 #좋아요 
 def q_likes(request, id):
-    like_b = get_object_or_404(Question, id=id)
-    if request.nickname in like_b.q_like.all(): #nickname 
-        like_b.q_like.remove(request.nickname)
-        like_b.q_likes -= 1
-        like_b.save()
+    like_q = get_object_or_404(Question, id=id)
+    if request.user in like_q.q_like.all(): 
+        like_q.q_like.remove(request.user)
+        like_q.q_like_count -= 1
+        like_q.save()
     else:
-        like_b.q_like.add(request.nickname)
-        like_b.q_likes += 1
-        like_b.save()
-    return redirect('/q_detail/' + str(id))
+        like_q.q_like.add(request.user)
+        like_q.q_like_count += 1
+        like_q.save()
+    return redirect('q_detail' , like_q.id) #redurect로 전달 하기 때문에 조회수 올라감..
 
 #추천수 
 # def q_clip(request, id):

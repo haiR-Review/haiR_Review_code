@@ -83,11 +83,11 @@
                                     href="{% url 'q_detail' qnaobj.id %}">{{qnaobj.question}}
                                 </a>
                             </td>
-                            <td id="list_td">{{ qnaobj.nickname }}</td>
+                            <td id="list_td">{{ qnaobj.user }}</td>
                             <td id="list_td">{{ qnaobj.q_date|date:'Y.m.d' }}</td>
                             {{ qna.q_update_counter}}
                             <td id="list_td">{{ qnaobj.q_clicks }}</td>
-                            <td id="list_td">{{ qnaobj.q_likes }}</td>
+                            <td id="list_td">{{ qnaobj.q_like_count }}</td>
                         </tr>
                     </tbody>
                     {% endfor %}

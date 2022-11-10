@@ -83,11 +83,11 @@
 									href="{% url 'f_detail' frees.id %}">{{frees.p_title}}
 								</a>
 							</td>
-							<td id="list_td">{{ frees.user }}</td>
+							<td id="list_td">{{ frees.user}}</td>
 							<td id="list_td">{{ frees.p_date|date:'Y.m.d' }}</td>
 							{{ free.p_update_counter}}
 							<td id="list_td">{{ frees.p_clicks }}</td>
-							<td id="list_td">{{ frees.p_likes }}</td>
+							<td id="list_td">{{ frees.p_like_count}}</td>
 						</tr>
 					</tbody>
 					{% endfor %}
