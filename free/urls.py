@@ -8,7 +8,7 @@ urlpatterns = [
     path('f_detail/<str:id>/', views.f_detail, name='f_detail'),
     path('f_edit/<str:id>/', views.f_edit, name='f_edit'),
     path('f_delete/<str:id>/', views.f_delete, name='f_delete'),
-    path('p_like/<int:p_id>/', views.p_likes, name="p_likes"),
+    path('f_like/<str:id>/', views.f_likes, name="f_likes"),
     #path('p_clicks/<int:p_id>/', views.p_clicks, name="p_clicks"),
     path('f_search/', views.f_search, name='f_search'),
 ]

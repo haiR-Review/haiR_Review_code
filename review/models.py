@@ -1,15 +1,12 @@
-from django.db import models
-
-# Create your models here.
-
-
 from tkinter import CASCADE
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
+from django.conf import settings
 
-# Create your models here.
-
+# 리뷰게시판
 class Review(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     r_title = models.CharField(max_length=200)
     r_body = models.TextField()
     hashtags = models.ManyToManyField('main.Hashtag', blank = True)
@@ -17,10 +14,11 @@ class Review(models.Model):
     r_photo = models.ImageField(upload_to='images/', blank = True)
     r_receipt = models.ImageField(upload_to='images/', blank = True)
     r_nickname = models.CharField(max_length=20, null = True, blank = True)
-    r_clicks = models.PositiveIntegerField(default=0, verbose_name='조회수')
+    r_clicks = models.PositiveIntegerField(default=0, verbose_name='리뷰_조회수')
     r_date = models.DateTimeField('data published')
-    r_likes = models.PositiveIntegerField(default=0, verbose_name='추천수')
-
+    r_like = models.ManyToManyField(User,related_name ='r_like_users' , blank = True)
+    r_like_count = models.PositiveIntegerField(default = 0)
+    
     def __str__(self):
         return self.r_title
 
@@ -36,7 +34,7 @@ class Review(models.Model):
 class r_comment(models.Model) :
     def __str__(self) :
         return self.text
-
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     r_id = models.ForeignKey(Review, on_delete=models.CASCADE, related_name='r_comments')
     text = models.CharField(max_length=20)
     create_at = models.DateTimeField(auto_now=True)
