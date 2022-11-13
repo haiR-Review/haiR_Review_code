@@ -1,9 +1,44 @@
-<h1> 해시태그 목록 </h1>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/h_list.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="nav_menu">
+            <li id="logo_nav_img"><a class="nav_li" href="{% url 'main' %}"><img id="logo_leo" src="{% static 'img/create/logo5.png' %}"></a></li>
+            <li id="nav_part"><a class="nav_li" href="{% url 'r_list' %}" id="list_now">미용실 익명 리뷰</a></li>
+            <li id="nav_part"><a class="nav_li" href="{% url 'q_list' %}">헤어 Q&A</a></li>
+            <li id="nav_part"><a class="nav_li" href="{% url 'f_list' %}">자유게시판</a></li>
+			<li id="nav_part"><a class="nav_li" href="{% url 'h_list' %}">해시태그</a></li>
+        </ul>
 
-{% for hashtags in hashtags.all %} 
+        <ul class="nav_user">
+            {% if user.is_active %}
+            <li id="nav_part"><a class="nav_li" href="{% url 'mypage' user.username %}">{{ user.username }}</a></li>
+            <li class="nav_li" id="nav_slash">/</li>
+            <li id="nav_part"><a class="nav_li" href="{% url 'logout' %}">로그아웃</a></li>
+            {% else %}
+            <li id="nav_part"><a class="nav_li" href="{% url 'login' %}">로그인</a></li>
+            <li class="nav_li" id="nav_slash">/</li>
+            <li id="nav_part"><a class="nav_li" href="{% url 'signup' %}">회원가입</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <h2> 해시태그 목록 </h2>
+
+    {% for hashtags in hashtags.all %}
 
     {{ hashtags.name }}<br>
 
-{% endfor %}
+    {% endfor %}
 
-<a href="{% url 'hashtag' %}">해시태그 추가하기</a>
+    <br>
+    <a class="h_add" href="{% url 'hashtag' %}">해시태그 추가하기</a>
+</body>
+</html>

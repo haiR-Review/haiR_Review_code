@@ -12,116 +12,109 @@
     font-style: normal;
 }
 
-body {
-    background-color: #403964;
-}
+body {background-color: #403964;}
 
-.login {
-    color: rgb(255, 255, 255);
-    margin-top: 1.03cm;
-}
-
-.big_login {
-    margin-left: 125px;
-    margin-top: 20px;
-}
-
-.search {
-    font-family: 'Pretendard-Regular';
-    font-size: 15px;
-    color: rgb(255, 255, 255);
-    margin-left: 30px;
-}
-
-.first_come {
-    font-family: 'GangwonEdu_OTFBoldA';
-    font-size: 18.1px;
-    color: rgb(255, 255, 255);
-    margin-left: 2.74cm;
-    margin-top: 1.42cm;
-}
-
-.first_logo {
-    height: 2.15cm;
-    margin-left: 3.5cm;
-    margin-top: 0.52cm;
-}
-
-.back_mypage {
+/* 바탕 이미지 */
+.back_img_h {
 	grid-column: 2;
     display: flex;
 	width: 42vw;
 	height: auto;
-	bottom: 0;
 	position: fixed;
+    bottom: 0;
 	margin-left: 50vw;
+    pointer-events: none;
 }
 
-.password {
-    font-family: 'GangwonEdu_OTFBoldA';
+/* 로고 이미지 */
+.login-img {
+    width: 25vw;
+    height: 20vh;
 }
 
+/* 전체 컨테이너 */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10vh;
+}
+
+/* form 컨테이너 */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width: 25vw;
+}
+
+/* 나머지 컨테이너 */
+.container2 {
+    display: inline-block;
+    width: 25vw;
+}
+
+/* 아이디, 비밀번호 input */
 #id_username, #id_password {
     font-family: 'GangwonEdu_OTFBoldA';
-    color: rgb(255, 255, 255);
-    background-color: #403964;
-    margin-left: 0.4cm;
     border: none;
-    width: 172px;
-}
-
-#id_username {
-    border-bottom: 1px solid #FFBA00;
-    color: #FFBA00;
-}
-
-#id_password {
+    width: 18vw;
     background-color: #403964;
+    margin-top: 6vh;
+    float: right;
     border-bottom: 1px solid #FFFFFF;
+    color: #FFFFFF;
 }
 
-.username_login {
-    margin-left: 2.94cm;
-    color: #FFBA00;
-    background-color: #403964;
-}
-
-.username_account {
-    color: #FFBA00;
-}
-
-.password_login {
-    margin-left: 2.62cm;
-    margin-top: 0.6cm;
-    background-color: #403964;
-}
-
-.checkbox {
-    border-radius: 20px;
-    width: 0.29cm;
-    height: 0.29cm;
-}
-
-.checktext {
+.login-first {
     font-family: 'GangwonEdu_OTFBoldA';
     color: rgb(255, 255, 255);
-    margin-left: 2.6cm;
+    font-size: 15px;
+    margin-top: 6vh;
+    display: inline-block;
 }
 
-.hui {
-    color: #FFBA00;
-    margin-left: 50px;
+/* 회원가입 */
+.signup {
+    font-family: 'Pretendard-Regular';
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+    margin-top: 6vh;
+    cursor: pointer;
+    text-decoration: none;
+    float: right;
+}
+.signup:hover {
+    color: #FFBA00
 }
 
-.purple {
+/* 로그인 버튼 */
+.login-btn {
     background-color: #8F87A7;
     font-family: 'Pretendard-Regular';
     color: rgb(255, 255, 255);
     border: none;
-    width: 6.5cm;
-    height: 0.85cm;
     border-radius: 10px;
-    margin-left: 2.63cm;
-    margin-top: 0.8cm;
-    margin-bottom: 1.47cm;
+    width: 25vw;
+    height: 5vh;
+    margin-top: 6vh;
+    cursor: pointer;
+}
+.login-btn:hover {
+    color: #8F87A7;
+    background-color: #FFFFFF;
+}
+
+/* 입력 글자 색 */
+label {
+    color: white;
+    float: left;
+}
+
+/* input 클릭했을 때 강조X */
+input {
+    outline: none;
+    color: white;
 }

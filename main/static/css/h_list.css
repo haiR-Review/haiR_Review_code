@@ -12,18 +12,14 @@
     font-style: normal;
 }
 
+* {
+    font-family: 'GangwonEdu_OTFBoldA';
+}
+
 body {
-    background-color: #F7ECDA;
-	margin: 0;
-    overflow-x: hidden;
-}
-
-table {
-    margin-left: 1rem;
-}
-
-form {
-    margin-left: 1rem;
+    font-family: 'GangwonEdu_OTFBoldA';
+    background-color: #E6DECF;
+    margin: 30px;
 }
 
 /* 네브바 시작 */
@@ -91,41 +87,20 @@ form {
     color: #403964;
 }/* id로 하면 되고 class로 하면 왜 안 되지...? */
 
-ul {list-style: none;}
+ul {
+    list-style:none;
+}
 
-#list_now {color: #403964;}
+#list_now {
+	color: #403964;
+}
 
 /* 네브바 끝 */
 
-#id_r_title, #id_r_body, #id_r_name, #id_r_location {
-    width: 40vw;
+.h_add {
+    text-decoration: none;
+    color: #666666;
 }
-
-#id_r_photo, #id_r_receipt {
-    color: #A79EB3;
-    font-family: 'GangwonEdu_OTFBoldA';
-    padding-left: 20vw;
+.h_add:hover {
+    color: #8F87A7;
 }
-
-#id_r_receipt {
-    padding-bottom: 37.5vh;
-}
-
-.form_table, footer {
-    font-family: 'Pretendard-Regular';
-}
-
-.r_write {
-    font-family: 'GangwonEdu_OTFBoldA';
-    color: #A79EB3;
-    border-radius: 5px;
-    border: solid #707070 1px;
-    background-color: white;
-    margin-left: 1rem;
-}
-.r_write:hover {color: #403964;}
-
-#id_r_body {height: 40vh;}
-#id_r_body:focus {outline: none;}
-
-input:focus {outline: none;}

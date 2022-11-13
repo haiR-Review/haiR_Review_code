@@ -12,18 +12,9 @@
     font-style: normal;
 }
 
-body {
+* {
+    font-family: 'GangwonEdu_OTFBoldA';
     background-color: #F7ECDA;
-	margin: 0;
-    overflow-x: hidden;
-}
-
-table {
-    margin-left: 1rem;
-}
-
-form {
-    margin-left: 1rem;
 }
 
 /* 네브바 시작 */
@@ -91,41 +82,44 @@ form {
     color: #403964;
 }/* id로 하면 되고 class로 하면 왜 안 되지...? */
 
-ul {list-style: none;}
+ul {
+    list-style:none;
+}
 
-#list_now {color: #403964;}
+#list_now {
+	color: #403964;
+}
 
 /* 네브바 끝 */
 
-#id_r_title, #id_r_body, #id_r_name, #id_r_location {
-    width: 40vw;
+.container {margin-left: 1rem;}
+
+label {display: none;}
+
+#id_name {
+    border: none;
+    background-color: #F7ECDA;
+    outline: none;
+    border-bottom: 1px solid #423a36;
 }
 
-#id_r_photo, #id_r_receipt {
-    color: #A79EB3;
-    font-family: 'GangwonEdu_OTFBoldA';
-    padding-left: 20vw;
+.hashtag-btn {
+    background-color: #F7ECDA;
+    border: 1px solid #423a36;
+    cursor: pointer;
+
+    padding: 0.5rem;
+
+    transition: transform 0.3s;
+}
+.hashtag-btn:hover {
+    background-color: #423a36;
+    color: #F7ECDA;
+    transform: translateY(-4px);
 }
 
-#id_r_receipt {
-    padding-bottom: 37.5vh;
+.hashtag-list {
+    color: #423a36;
+    text-decoration: none;
 }
-
-.form_table, footer {
-    font-family: 'Pretendard-Regular';
-}
-
-.r_write {
-    font-family: 'GangwonEdu_OTFBoldA';
-    color: #A79EB3;
-    border-radius: 5px;
-    border: solid #707070 1px;
-    background-color: white;
-    margin-left: 1rem;
-}
-.r_write:hover {color: #403964;}
-
-#id_r_body {height: 40vh;}
-#id_r_body:focus {outline: none;}
-
-input:focus {outline: none;}
+.hashtag-list:hover {color: #8F87A7;}

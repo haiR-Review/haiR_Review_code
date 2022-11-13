@@ -83,33 +83,32 @@
 		</form>
     </div>
 	
+	<div class="summary-collect">
+		<div class="summary">
+			<p>리뷰 게시판 게시글</p>
+			{% for reviews in reviews.all %}
+			<a href="{% url 'r_detail' reviews.id %}">{{reviews.r_summary}}...
+				{{reviews.r_date|date:'Y.m.d'}}</a><br>
+			{% endfor %}
+		</div>
 	
-	<div class="summary">
-		<p>리뷰 게시판 게시글</p>
-		{% for reviews in reviews.all %}
-		<a href="{% url 'r_detail' reviews.id %}">{{reviews.r_summary}}...
-		{{reviews.r_date|date:'Y.m.d'}}</a><br>
-		{% endfor %}
+		<div class="summary">
+			<p>QnA 게시판 게시글</p>
+			{% for qnaobj in qnaobj.all %}
+			<a href="{% url 'q_detail' qnaobj.id %}">{{qnaobj.q_summary}}...
+				{{ qnaobj.q_date|date:'Y.m.d' }}</a><br>
+			{% endfor %}
+		</div>
+	
+		<div class="summary">
+			<p>자유 게시판 게시글</p>
+			{% for frees in frees.all %}
+			<a href="{% url 'f_detail' frees.id %}">{{frees.p_summary}}...
+				{{frees.p_date|date:'Y.m.d'}}</a><br>
+			{% endfor %}
+		</div>
 	</div>
 	
-	
-	<div class="summary">
-		<p>QnA 게시판 게시글</p>
-		{% for qnaobj in qnaobj.all %}
-		<a href="{% url 'q_detail' qnaobj.id %}">{{qnaobj.q_summary}}...
-		{{ qnaobj.q_date|date:'Y.m.d' }}</a><br>
-		{% endfor %}
-	</div>
-	
-	
-	<div class="summary">
-		<p>자유 게시판 게시글</p>
-		{% for frees in frees.all %}
-		<a href="{% url 'f_detail' frees.id %}">{{frees.p_summary}}...
-		{{frees.p_date|date:'Y.m.d'}}</a><br>
-		{% endfor %}
-	</div>
-
     <div class="main_bottom">
         <img id="footer_img_main" src="{% static 'img/main/background_footer.png' %}">
         <footer id="footer_main">

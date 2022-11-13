@@ -1,13 +1,50 @@
-<h1>해시태그 페이지</h1>
+{% load static %}
 
-{{ error_message }}
+<!DOCTYPE html>
+<html lang="en">
 
-<form method="POST">
-    {% csrf_token %} 
-    <table>
-        {{form.as_table}}
-    </table>
-    <button type="submit">추가하기</button>
-</form>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/hashtag.css' %}">
+    <title>Hashtag</title>
+</head>
 
-<a href="{% url 'h_list' %}">해시태그 목록</a>
+<body>
+    <nav class="navbar">
+        <ul class="nav_menu">
+            <li id="logo_nav_img"><a class="nav_li" href="{% url 'main' %}"><img id="logo_leo" src="{% static 'img/create/logo5.png' %}"></a></li>
+            <li id="nav_part"><a class="nav_li" href="{% url 'r_list' %}" id="list_now">미용실 익명 리뷰</a></li>
+            <li id="nav_part"><a class="nav_li" href="{% url 'q_list' %}">헤어 Q&A</a></li>
+            <li id="nav_part"><a class="nav_li" href="{% url 'f_list' %}">자유게시판</a></li>
+			<li id="nav_part"><a class="nav_li" href="{% url 'h_list' %}">해시태그</a></li>
+        </ul>
+
+        <ul class="nav_user">
+            {% if user.is_active %}
+            <li id="nav_part"><a class="nav_li" href="{% url 'mypage' user.username %}">{{ user.username }}</a></li>
+            <li class="nav_li" id="nav_slash">/</li>
+            <li id="nav_part"><a class="nav_li" href="{% url 'logout' %}">로그아웃</a></li>
+            {% else %}
+            <li id="nav_part"><a class="nav_li" href="{% url 'login' %}">로그인</a></li>
+            <li class="nav_li" id="nav_slash">/</li>
+            <li id="nav_part"><a class="nav_li" href="{% url 'signup' %}">회원가입</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    {{ error_message }}
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}
+            <table>
+                {{form.as_table}}
+            </table>
+            <button class="hashtag-btn" type="submit">추가하기</button>
+        </form>
+    
+        <a class="hashtag-list" href="{% url 'h_list' %}">해시태그 목록</a>    
+    </div>
+</body>
+
+</html>
