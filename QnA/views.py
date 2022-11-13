@@ -32,7 +32,7 @@ def q_list(request):
     qnaobj = Question.objects
     q_sort = request.GET.get('q_sort','') #정렬
     if q_sort == 'q_clicks' :
-        qnaobj = Question.objects.all().order_by('-q_clicks','-q_date' , 'q_like_count')#모델 오브젝트 templates에서 받고 싶은 요소만 추가
+        qnaobj = Question.objects.all().order_by('-q_clicks')#모델 오브젝트 templates에서 받고 싶은 요소만 추가
     else :
         qnaobj = Question.objects.all().order_by('-q_date')
     return render(request, 'q_list.html' , {'qnaobj':qnaobj, 'q_sort':q_sort})
