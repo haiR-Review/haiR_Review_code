@@ -75,7 +75,7 @@
 							<th id="list_th">추천수</th>
 						</tr>
 					</thead>
-					{% for frees in frees.all %}
+					{% for frees in frees %}
 					<tbody>
 						<tr>
 							<td id="list_td">
@@ -92,6 +92,35 @@
 					</tbody>
 					{% endfor %}
 				</table>
+				<!-- Pagination -->
+				<div style="text-align:center">
+					<div class="pagination">
+					
+						<div style="width:35%; margin: 5px;">
+						{% if frees.has_previous %}
+							<a class="abutton" href="?page=1">맨 앞으로</a>
+							<a class="abutton" href="?page={{ frees.previous_page_number }}">이전</a>
+						{% endif %}
+						</div>
+		
+						<div style="width:30%; margin: 5px;">
+						{% for page in frees.paginator.page_range %}
+							{% if page >= frees.number|add:-2 and page <= frees.number|add:2 %}
+							<span class="{% if page == frees.number %}current{% endif %}">
+								<a href="?page={{ page }}">{{ page}}</a>
+							</span>
+							{% elif page >= frees.number|add:-3 and page <= frees.number|add:3 %}
+								..
+							{% endif %}
+						{% endfor %}
+						</div>
+		
+						<div style="width:35%; margin: 5px;">
+						{% if frees.has_next %}
+							<a class="abutton" href="?page={{ frees.next_page_number }}">다음</a>
+							<a class="abutton" href="?page={{ frees.paginator.num_pages }}">맨 뒤로</a>
+						{% endif %}
+						</div>
 			</div>
 		</div>
 	</div>

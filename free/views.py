@@ -6,6 +6,7 @@ from django.utils import timezone
 from free.models import Free, p_comment
 from main.models import Hashtag 
 from django.http import request
+from django.core.paginator import Paginator
 
 # Create your views here.
 
@@ -33,6 +34,11 @@ def f_list(request):
         frees = Free.objects.all().order_by('-p_clicks','-p_date')
     else : 
         frees = Free.objects.all().order_by('-p_date')
+
+     #페이지
+    paginator = Paginator(frees, 2)
+    page = request.GET.get('page')
+    frees = paginator.get_page(page)
     return render(request, 'f_list.html', {'frees':frees, 'f_sort':f_sort})
 
 #자유게시판 글 / 댓글

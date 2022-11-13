@@ -5,6 +5,7 @@ from django.utils import timezone
 from QnA.models import Question, Answer 
 from main.models import Hashtag
 from django.http import request
+from django.core.paginator import Paginator
 # Create your views here.
 
 #질문 작성
@@ -29,6 +30,11 @@ def q_list(request):
         qnaobj = Question.objects.all().order_by('-q_clicks','-q_date')
     else :
         qnaobj = Question.objects.all().order_by('-q_date')
+    
+    #페이지
+    paginator = Paginator(qnaobj, 2)
+    page = request.GET.get('page')
+    qnaobj = paginator.get_page(page)
     return render(request, 'q_list.html' , {'qnaobj':qnaobj, 'q_sort':q_sort})
 
 #질문글 상세페이지
