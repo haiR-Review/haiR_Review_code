@@ -124,7 +124,7 @@
 				</div>
             </form>
 			{% for r_comment in review.r_comments.all %} 
-            <p> {{ r_comment.name }} : {{ r_comment.text }} </p>
+            <p> {{ r_comment.user }} : {{ r_comment.text }} </p>
 			<hr id="comment_hr">
             {% endfor %}
         </div>

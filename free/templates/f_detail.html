@@ -71,7 +71,7 @@
                     </div>
                 </div>
                 <div id="d_like">
-                    <a href="{% url 'p_likes' free.id %}">
+                    <a href = "{% url 'f_likes' free.id %}">
                         {% if user in free.p_like.all %} 
                         <svg class="like-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
                             class="bi bi-heart-fill" viewBox="0 0 16 16">
@@ -86,7 +86,9 @@
                         </svg>
                         {% endif %}
                     </a>
+                    
                 </div>
+                
             </div>
             <div class="U_D">
                 <a style="text-decoration: none; color: #A7755E;" href="{% url 'f_edit' free.id %}">수정하기</a>
@@ -99,7 +101,7 @@
     <div class="D_bottom">
         <div class="D_bottom_back">
             {% for comment in free.p_comments.all %} 
-                <p>{{ comment.name }} : {{ comment.text }} </p>
+                <p>{{ comment.user }} : {{ comment.text }} </p>
             {% endfor %} 
             <br>
     
