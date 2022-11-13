@@ -96,24 +96,29 @@ ul {
 
 label {display: none;}
 
+input {all: unset;}
+
 #id_name {
     border: none;
     background-color: #F7ECDA;
     outline: none;
-    border-bottom: 1px solid #423a36;
+    border-bottom: 1px solid #6a615d;
+    margin-top: 1rem;
 }
 
 .hashtag-btn {
     background-color: #F7ECDA;
-    border: 1px solid #423a36;
+    border: 1px solid #6a615d;
     cursor: pointer;
 
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 
-    transition: transform 0.3s;
+    transition: 0.3s;
 }
 .hashtag-btn:hover {
-    background-color: #423a36;
+    background-color: #6a615d;
     color: #F7ECDA;
     transform: translateY(-4px);
 }

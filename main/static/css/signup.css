@@ -38,12 +38,21 @@ body {
     margin-top: 20vh;
 }
 
+/* form 컨테이너 */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width: 25vw;
+}
+
 #id_username, #id_password1, #id_password2 {
     background-color: #403964;
     border: none;
     margin-top: 6vh;
     float: right;
-    width: 200px;
+    width: 16vw;
     border-bottom: 1px solid white;
 }
 
@@ -58,6 +67,10 @@ body {
     height: 5vh;
     margin-top: 6vh;
     cursor: pointer;
+}
+.signup-btn:hover {
+    color: #8F87A7;
+    background-color: #FFFFFF;
 }
 
 /* 불필요한 문구 없애기 */
