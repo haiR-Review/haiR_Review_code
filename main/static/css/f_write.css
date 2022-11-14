@@ -13,9 +13,130 @@
 }
 
 body {
-    background-color: #E6DECF;
+    background-color: #F7ECDA;
 }
 
-#title {
-    width: 70px;
+form {
+    margin-left: 1rem;
+    margin-top: 8vh;
 }
+
+/* 네브바 시작 */
+
+.navbar {
+    font-family: 'GangwonEdu_OTFBoldA';
+    /* 스크롤 내려도 navbar상단 고정 */
+    top: 0;
+    /* 스크롤 내려도 navbar상단 고정 */
+    padding-top: 0;
+    margin-top: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 5fr 2fr;
+    grid-template-rows: 5vw;
+}
+
+#logo_leo {
+    width: 5vw;
+    height: auto;
+}
+
+.nav_menu {
+    grid-column: 1;
+    display: flex;
+    align-items: center;  /* 세로정렬 */
+    justify-self: left;
+}
+
+.nav_menu li {
+    margin-right: 6vw;
+} /* 단어 간격 */
+
+.nav_user {
+    grid-column: 2;
+    display: flex;
+    align-items: center;
+    justify-self: right;
+    margin-right: 3vw;
+}
+
+.nav_user li {
+    margin-left: 1vw;
+} /* 단어 간격 */
+
+.nav_li {
+    color: #8F87A7;
+    text-decoration: none;
+    font-size: 1.6vw;
+} /* 왜인지 부모요소에서 적용하면 안 먹어서... */
+
+#nav_slash {
+	padding-top: 0.7vw; /* a 태그 안에 넣으면 안 먹음 */
+}
+
+#nav_part {
+	padding-top: 0.7vw; /* a 태그 안에 넣으면 안 먹음. 왜? */
+}
+
+#logo_nav_img {
+	padding: 0.4vw;
+}
+
+#nav_part:hover {
+    color: #403964;
+}/* id로 하면 되고 class로 하면 왜 안 되지...? */
+
+ul {
+    list-style:none;
+}
+
+#list_now {
+	color: #403964;
+}
+
+/* 네브바 끝 */
+
+.f_button {
+    font-family: 'GangwonEdu_OTFBoldA';
+    color: #A79EB3;
+    border-radius: 5px;
+    border: solid #707070 1px;
+    background-color: white;
+    cursor: pointer;
+    padding: 5px 10px;
+    font-size: 15px;
+    margin-left: 1rem;
+}
+.f_button:hover {
+    color: #8F87A7;
+}
+
+p > label {
+    display: none;
+}
+
+#id_p_title {height: 3.5ex;}
+#id_p_body {
+    height: 40vh;
+}
+#id_p_title, #id_p_body {
+    font-family: 'Pretendard-Regular';
+    margin-left: 1rem;
+    width: 38vw;
+    border: solid #707070 1px;
+    border-radius: 3px;
+}
+
+#id_p_photo {
+    margin-left: 1rem;
+    color: #A79EB3;
+    font-family: 'GangwonEdu_OTFBoldA';
+}
+
+#id_hashtags {
+    font-family: 'Pretendard-Regular';
+    margin-left: 1rem;
+}
+
+input:focus {outline: none;}
+#id_p_body:focus {outline: none;}

@@ -13,74 +13,76 @@
 }
 
 body {
-    background-image: url("img.png");
+    /* background-image: url("img.png"); */
     background-color: #403964;
 }
 
-.signup {
-    color: rgb(255, 255, 255);
-}
-
-.big_signup {
-    margin-left: auto;
-    margin-top: auto;
-}
-
-.back_mypage {
+/* 바탕 이미지 */
+.back_img_h {
 	grid-column: 2;
-	display: flex;
+    display: flex;
 	width: 42vw;
 	height: auto;
-	bottom: 0;
 	position: fixed;
+    bottom: 0;
 	margin-left: 50vw;
+    pointer-events: none;
 }
 
-.password_signup {
-    font-family: 'GangwonEdu_OTFBoldA';
-    margin-top: 1.92cm;
+/* 전체 컨테이너 */
+.signup-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20vh;
 }
 
-.username_signup {
-    color: #FFBA00;
+/* form 컨테이너 */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width: 25vw;
 }
 
-.username_signup, .email_signup, .username2_signup {
-    margin-left: 3.39cm;
-    margin-top: 0.86cm;
-}
-
-.password1_signup, .phonenumber_signup {
-    margin-left: 3.03cm;
-    margin-top: 0.86cm;
-}
-
-.password2_signup {
-    margin-left: 2.3cm;
-    margin-top: 0.86cm;
-}
-
-#id_username, #id_password1, #id_password2, #id_phonenumber, #id_email, #id_username2 {
+#id_username, #id_password1, #id_password2 {
     background-color: #403964;
     border: none;
-}
-
-#id_username {
-    border-bottom: 1px solid #FFBA00;
-}
-
-#id_password1, #id_password2, #id_phonenumber, #id_email, #id_username2 {
+    margin-top: 6vh;
+    float: right;
+    width: 16vw;
     border-bottom: 1px solid white;
 }
 
-.purple_signup {
+/* 회원가입 버튼 */
+.signup-btn {
     background-color: #8F87A7;
     font-family: 'Pretendard-Regular';
     color: rgb(255, 255, 255);
     border: none;
-    width: 6.69cm;
-    height: 0.85cm;
     border-radius: 10px;
-    margin-left: 2.35cm;
-    margin-top: 0.96cm;
+    width: 25vw;
+    height: 5vh;
+    margin-top: 6vh;
+    cursor: pointer;
+}
+.signup-btn:hover {
+    color: #8F87A7;
+    background-color: #FFFFFF;
+}
+
+/* 불필요한 문구 없애기 */
+ul, span {
+    display: none;
+}
+
+/* 입력 글자 색 */
+label {color: white;}
+
+/* input 클릭했을 때 강조X */
+input {
+    outline: none;
+    color: white;
 }

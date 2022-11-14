@@ -203,18 +203,30 @@ p {
 	color: #403964;
 }
 
+.summary-collect {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .summary {
+    width: 23%;
     border: 1px solid #403964;
-    border-radius: 2em;
-    box-shadow: 5px 5px 5px #8F87A7;
+    box-shadow: 5px 5px #8F87A7;
     padding-left: 30px;
     padding-right: 30px;
     padding-bottom: 30px;
-	margin-bottom: 7%;
-	background-color: white;
-	margin-right: 10vw;
-	margin-left: 10vw;
+    margin-bottom: 7%;
+    background-color: white;
+    margin-right: 2vw;
+    margin-left: 2vw;
     /* background-color: #8F87A7; */
+}
+.summary:hover {
+    background-color: #ffffff;
+    color: white;
+    border: none;
+    box-shadow: none;
 }
 
 div a {

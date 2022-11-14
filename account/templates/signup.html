@@ -1,16 +1,33 @@
-{% block container %}
-<h1>회원가입 페이지</h1>
-<hr>
-<div>
-<form method="POST">
-    {% csrf_token %}
-    {{ signup_form }}
-    <div class = "failure_message hide">아이디는 네 글자 이상이여야 합니다</div>
-    <div class = "success_message hide">사용할 수 있는 아이디 입니다</div>
-    <div class = "mismatch_message hide">두 비밀번호가 일치하지 않습니다</div>
-    <div class = "match_message hide">두 비밀번호가 일치합니다</div>
-    <input type="submit" name="Submit" id = "submit" value = "가입하기"/>
-</form>
-</div>
+{% load static %}
 
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    <title>Signup</title>
+</head>
+
+<body>
+    <img class="back_img_h" src="{% static 'img/account/logo4.png' %}">
+    <div class="signup-container">
+        {% block container %}
+        <div class="container">
+            <form method="POST">
+                {% csrf_token %}
+				{{ signup_form }}
+				<div class="failure_message hide">아이디는 네 글자 이상이여야 합니다</div>
+				<div class="success_message hide">사용할 수 있는 아이디 입니다</div>
+				<div class="mismatch_message hide">두 비밀번호가 일치하지 않습니다</div>
+				<div class="match_message hide">두 비밀번호가 일치합니다</div>
+				<input class="signup-btn" type="submit" name="Submit" id="submit" value="회원가입">
+            </form>
+        </div>
+        {% endblock %}
+    </div>
+</body>
+
+</html>

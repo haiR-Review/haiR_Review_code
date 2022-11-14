@@ -127,6 +127,7 @@ ul {
 	bottom: 0;
 	position: fixed;
 	margin-left: 12vw;
+    pointer-events: none;
 }
 
 .nav_mypage {
