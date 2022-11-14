@@ -37,9 +37,11 @@
 
     <div>
         {% if people.profile.p_image %}
-                <img src="{{ people.profile.p_image.url }}" width= 250, height = 250 alt="{{ people.profile.p_image}}">
-                {% endif %}
-        <h1> {{ people.username }}</h1>
+		<div class="profile_frame">
+			<img class="profile_img" src="{{ people.profile.p_image.url }}" alt="{{ people.profile.p_image}}">
+		</div>
+        {% endif %}
+        <div class="username">{{ people.username }}</div>
         <div>
             <h2>{{ people.profile.nickname }}</h2>
         </div>

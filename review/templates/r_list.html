@@ -2,41 +2,42 @@
 
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-    <meta charset="UTF-8">
-    <title>머리뷰</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/list.css' %}">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-    <!--[if IE 7]>
+	<meta charset="UTF-8">
+	<title>머리뷰</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/list.css' %}">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+	<!--[if IE 7]>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome-ie7.min.css">
     <![endif]-->
 </head>
-    
+
 <body>
-    <nav class="navbar">
-        <ul class="nav_menu">
-            <li><a href="{% url 'main' %}"><img id="logo_leo" src="{% static 'img/list/logo4.png' %}"></a></li>
-            <li class="nav_position" id="nav_part"><a class="nav_li" id="list_now" href="{% url 'r_list' %}">미용실 익명 리뷰</a></li>
-            <li class="nav_position" id="nav_part"><a class="nav_li" href="{% url 'q_list' %}">헤어 Q&A</a></li>
-            <li class="nav_position" id="nav_part"><a class="nav_li" href="{% url 'f_list' %}">자유게시판</a></li>
+	<nav class="navbar">
+		<ul class="nav_menu">
+			<li><a href="{% url 'main' %}"><img id="logo_leo" src="{% static 'img/list/logo4.png' %}"></a></li>
+			<li class="nav_position" id="nav_part"><a class="nav_li" id="list_now" href="{% url 'r_list' %}">미용실 익명 리뷰</a></li>
+			<li class="nav_position" id="nav_part"><a class="nav_li" href="{% url 'q_list' %}">헤어 Q&A</a></li>
+			<li class="nav_position" id="nav_part"><a class="nav_li" href="{% url 'f_list' %}">자유게시판</a></li>
 			<li class="nav_position" id="nav_part"><a class="nav_li" href="{% url 'h_list' %}">해시태그</a></li>
-        </ul>
+		</ul>
+	
+		<ul class="nav_user">
+			{% if user.is_active %}
+			<li class="nav_position" id="nav_part"><a class="nav_li" href="{% url 'mypage' user.username %}">{{user.username }}</a></li>
+			<li class="nav_position" id="nav_li">/</li>
+			<li class="nav_position" id="nav_part"><a class="nav_li" href="{% url 'logout' %}">로그아웃</a></li>
+			{% else %}
+			<li class="nav_position" id="nav_part"><a class="nav_li" href="{% url 'login' %}">로그인</a></li>
+			<li class="nav_position" id="nav_li">/</li>
+			<li class="nav_position" id="nav_part"><a class="nav_li" href="{% url 'signup' %}">회원가입</a></li>
+			{% endif %}
+		</ul>
+	</nav>
 
-        <ul class="nav_user">
-            {% if user.is_active %}
-            <li class="nav_position" id="nav_part"><a class="nav_li" href="{% url 'mypage' user.username %}">{{ user.username }}</a></li>
-            <li class="nav_position" id="nav_li">/</li>
-            <li class="nav_position" id="nav_part"><a class="nav_li" href="{% url 'logout' %}">로그아웃</a></li>
-            {% else %}
-            <li class="nav_position" id="nav_part"><a class="nav_li" href="{% url 'login' %}">로그인</a></li>
-            <li class="nav_position" id="nav_li">/</li>
-            <li class="nav_position" id="nav_part"><a class="nav_li" href="{% url 'signup' %}">회원가입</a></li>
-            {% endif %}
-        </ul>
-    </nav>
-
-    <div class="list_layout">
-        <div class="list_back">
+	<div class="list_layout">
+		<div class="list_back">
 
 			<div class="list_form">
 
@@ -60,40 +61,66 @@
 
 				<!-- 글작성 -->
 				<a class="list_write" type="submit" href="{% url 'r_write' %}">글쓰기</a>
-				
+
 			</div>
 
-            <div class="list_table">
-                <table>
-                    <!--table에는 grid적용이 안되나봐-->
-                    <thead id="list_thead">
-                        <tr>
-                            <th id="list_th">제목</th>
-                            <th id="list_th">작성자</th>
-                            <th id="list_th">작성일</th>
-                            <th id="list_th">조회수</th>
-                            <th id="list_th">추천수</th>
-                        </tr>
-                    </thead>
-                    {% for reviews in reviews.all %}
-                    <tbody>
+			<div class="list_table">
+				<table>
+					<!--table에는 grid적용이 안되나봐-->
+					<thead id="list_thead">
+						<tr>
+							<th id="list_th">제목</th>
+							<th id="list_th">작성자</th>
+							<th id="list_th">작성일</th>
+							<th id="list_th">조회수</th>
+							<th id="list_th">추천수</th>
+						</tr>
+					</thead>
+					{% for reviews in reviews %}
+					<tbody>
                         <tr>
                             <td id="list_td">
-                                <a style="text-decoration: none; color: rgb(111, 111, 111);"
-                                    href="{% url 'r_detail' reviews.id %}">{{reviews.r_title}}
-                                </a>
+                                <a href="{% url 'r_detail' reviews.id %}">{{reviews.r_title}}</a>
                             </td>
-                            <td id="list_td">{{ reviews.name }}</td>
+                            <td id="list_td">{{ reviews.user }}</td>
                             <td id="list_td">{{ reviews.r_date|date:'Y.m.d' }}</td>
 							{{review.r_update_counter}}
                             <td id="list_td">{{ reviews.r_clicks }}</td>
-                            <td id="list_td">{{ reviews.r_likes }}</td>
+                            <td id="list_td">{{ reviews.r_like_count }}</td>
                         </tr>
                     </tbody>
-                    {% endfor %}
-                </table>
-            </div>
-        </div>
-    </div>
+					{% endfor %}
+				</table>
+				<!-- Pagination -->
+				<div style="text-align:center">
+					<div class="pagination">
+
+						<div style="width:35%; margin: 5px;">
+							{% if reviews.has_previous %}
+							<a class="abutton" href="?page=1">맨 앞으로</a>
+							<a class="abutton" href="?page={{ reviews.previous_page_number }}">이전</a>
+							{% endif %}
+						</div>
+
+						<div style="width:30%; margin: 5px;">
+							{% for page in reviews.paginator.page_range %}
+							{% if page >= reviews.number|add:-2 and page <= reviews.number|add:2 %} <span
+								class="{% if page == reviews.number %}current{% endif %}">
+								<a href="?page={{ page }}">{{ page}}</a>
+								</span>
+								{% elif page >= reviews.number|add:-3 and page <= reviews.number|add:3 %} .. {% endif %}
+									{% endfor %} </div>
+
+									<div style="width:35%; margin: 5px;">
+										{% if reviews.has_next %}
+										<a class="abutton" href="?page={{ reviews.next_page_number }}">다음</a>
+										<a class="abutton" href="?page={{ reviews.paginator.num_pages }}">맨 뒤로</a>
+										{% endif %}
+									</div>
+						</div>
+					</div>
+				</div>
+			</div>
 </body>
+
 </html>

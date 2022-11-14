@@ -38,7 +38,7 @@
         <div class="list_back">
 
 			{% if m_searched %}
-			<h1 class="m_result">" {{ m_searched }} "</h1>
+			<h1 class="m_result">" {{ m_searched }} "으로 검색한 결과입니다</h1>
 			{% endif %}
 
             <div class="list_form">
@@ -80,43 +80,37 @@
 
                     {% for Question in m_qsearch %}
                         <tr>
-							<td id="list_td">QnA 게시판</td>
+							<td id="list_td"><a href="{% url 'q_list' %}">QnA 게시판</a></td>
                             <td id="list_td">
-                                <a style="text-decoration: none; color: rgb(111, 111, 111);"
-                                    href="{% url 'q_detail' Question.id %}">{{Question.question}}
-                                </a>
+                                <a href="{% url 'q_detail' Question.id %}">{{Question.question}}</a>
                             </td>
                             <td id="list_td">{{ Question.q_date|date:'Y.m.d' }}</td>
                             <td id="list_td">{{ Question.q_clicks }}</td>
-                            <td id="list_td">{{ Question.q_likes }}</td>
+                            <td id="list_td">{{ Question.q_like_count }}</td>
                         </tr>
                     {% endfor %}
 
 					{% for Free in m_fsearch %}
                         <tr>
-							<td id="list_td">자유게시판</td>
+							<td id="list_td"><a href="{% url 'f_list' %}">자유게시판</a></td>
                             <td id="list_td">
-                                <a style="text-decoration: none; color: rgb(111, 111, 111);" 
-								href="{% url 'f_detail' Free.id %}">{{Free.p_title}}
-                                </a>
+                                <a href="{% url 'f_detail' Free.id %}">{{Free.p_title}}</a>
                             </td>
                             <td id="list_td">{{ Free.p_date|date:'Y.m.d' }}</td>
                             <td id="list_td">{{ Free.p_clicks }}</td>
-                            <td id="list_td">{{ Free.p_likes }}</td>
+                            <td id="list_td">{{ Free.p_like_count }}</td>
                         </tr>
                     {% endfor %}
 
 					{% for Review in m_rsearch %}
                         <tr>
-							<td id="list_td">리뷰게시판</td>
+							<td id="list_td"><a href="{% url 'r_list' %}">리뷰게시판</a></td>
                             <td id="list_td">
-                                <a style="text-decoration: none; color: rgb(111, 111, 111);" 
-								href="{% url 'r_detail' Review.id %}">{{Review.r_title}}
-                                </a>
+                                <a href="{% url 'r_detail' Review.id %}">{{Review.r_title}}</a>
                             </td>
                             <td id="list_td">{{ Review.r_date|date:'Y.m.d' }}</td>
                             <td id="list_td">{{ Review.r_clicks }}</td>
-                            <td id="list_td">{{ Review.r_likes }}</td>
+                            <td id="list_td">{{ Review.r_like_count }}</td>
                         </tr>
                     {% endfor %}
 

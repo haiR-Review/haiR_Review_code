@@ -1,26 +1,28 @@
-from django.shortcuts import render
-
-# Create your views here.
-
-
 from email.policy import default
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from review.forms import ReviewForm, r_commentForm
 from django.utils import timezone
 from review.models import Review, r_comment
 from main.models import Hashtag
 from django.http import request
+from django.core.paginator import Paginator
 
 # Create your views here.
 
 #리뷰 작성
+@login_required
 def r_write(request, review = None) :
+
+    if not request.user.is_authenticated:
+        return redirect('main') #로그인 하지 않고 작성하려고 할시 main으로 이동
+
     if request.method == 'POST':
         form = ReviewForm(request.POST, request.FILES, instance = review)
-
         if form.is_valid():
             review = form.save(commit=False)
             review.r_date = timezone.now() 
+            review.user = request.user
             review.save()
             form.save_m2m()
                 
@@ -34,9 +36,14 @@ def r_list(request):
     reviews = Review.objects
     r_sort = request.GET.get('sort', '') 
     if r_sort == 'r_clicks':
-        reviews = Review.objects.all().order_by('-r_clicks','-r_date')
+        reviews = Review.objects.all().order_by('-r_clicks','-r_date' , 'r_like_count')
     else:
         reviews = Review.objects.all().order_by('-r_date')
+
+    #페이지
+    paginator = Paginator(reviews, 2)
+    page = request.GET.get('page')
+    reviews = paginator.get_page(page)
     return render(request, 'r_list.html', {'reviews':reviews, 'sort':r_sort})
 
 #리뷰 글 상세페이지
@@ -48,6 +55,7 @@ def r_detail(request, id):
             r_comment = form.save(commit = False)
             r_comment.r_id = review
             r_comment.text = form.cleaned_data['text']
+            r_comment.user = request.user
             r_comment.save()
             form.save_m2m()
             return redirect('r_detail', id)
@@ -77,17 +85,17 @@ def r_delete(request, id):
     return redirect('r_list')
 
 #좋아요 
-def r_likes(request, r_id):
-    like_b = get_object_or_404(Review, id=r_id)
-    if request.name in like_b.r_like.all():
-        like_b.r_like.remove(request.name)
-        like_b.r_likes -= 1
-        like_b.save()
+def r_likes(request, id):
+    like_r = get_object_or_404(Review, id= id)
+    if request.user in like_r.r_like.all():
+        like_r.r_like.remove(request.user)
+        like_r.r_like_count -= 1
+        like_r.save()
     else:
-        like_b.r_like.add(request.name)
-        like_b.r_likes += 1
-        like_b.save()
-    return redirect('/r_detail/' + str(r_id))
+        like_r.r_like.add(request.user)
+        like_r.r_like_count += 1
+        like_r.save()
+    return redirect('r_detail' , like_r.id)
 
 #추천수 
 def r_clip(request, r_id):
