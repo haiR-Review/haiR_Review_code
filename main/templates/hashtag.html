@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h1>해시태그 페이지임</h1>
 
 {{ error_message }}
@@ -10,4 +11,18 @@
     <button type="submit">추가하기</button>
 </form>
 
+=======
+<h1>해시태그 페이지입니다.</h1>
+
+{{ error_message }}
+
+<form method="POST">
+    {% csrf_token %} 
+    <table>
+        {{form.as_table}}
+    </table>
+    <button type="submit">추가하기</button>
+</form>
+
+>>>>>>> origin
 <a href="{% url 'h_list' %}">해시태그 목록</a>
