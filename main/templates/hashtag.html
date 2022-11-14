@@ -1,22 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<h1>해시태그 페이지임</h1>
-
-{{ error_message }}
-
-<form method="POST">
-    {% csrf_token %} 
-    <table>
-        {{form.as_table}}
-    </table>
-    <button type="submit">추가하기</button>
-</form>
-
-=======
-<h1>해시태그 페이지입니다.</h1>
-=======
 {% load static %}
->>>>>>> frontend
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,13 +8,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/hashtag.css' %}">
-    <title>Hashtag page</title>
+    <title>Hashtag</title>
 </head>
 
-<<<<<<< HEAD
->>>>>>> origin
-<a href="{% url 'h_list' %}">해시태그 목록</a>
-=======
 <body>
     <nav class="navbar">
         <ul class="nav_menu">
@@ -70,4 +48,3 @@
 </body>
 
 </html>
->>>>>>> frontend
