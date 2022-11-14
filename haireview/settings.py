@@ -56,7 +56,8 @@ INSTALLED_APPS = [
     'QnA.apps.QnaConfig',
     'free.apps.FreeConfig',
     'main.apps.MainConfig',
-    'bookmark.apps.BookmarkConfig'
+    'bookmark.apps.BookmarkConfig',
+	'django_summernote',
 ]
 
 MIDDLEWARE = [

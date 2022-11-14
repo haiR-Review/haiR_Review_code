@@ -37,50 +37,7 @@
 	<form method="POST" enctype="multipart/form-data">
 		{% csrf_token %}
 		<table>
-			<tbody>
-				<tr>
-					<th><label for="id_r_title"></label></th>
-					<td>
-						<input type="text" name="r_title" maxlength="200" required="" id="id_r_title"
-							placeholder="제목을 입력해 주세요.">
-					</td>
-					<label for="id_r_photo"></label>
-					<td>
-						<input type="file" name="r_photo" accept="image/*" id="id_r_photo" placeholder="사진 첨부">
-					</td>
-				</tr>
-				<tr>
-					<th><label for="id_r_body"></label></th>
-					<td>
-						<textarea name="r_body" cols="70" rows="10" required="" id="id_r_body"
-							placeholder="내용을 입력해 주세요."></textarea>
-					</td>
-					<label for="id_r_receipt"></label>
-					<td>
-						<input type="file" name="r_receipt" accept="image/*" id="id_r_receipt" placeholder="영수증 사진 첨부">
-					</td>
-				</tr>
-				<tr>
-					<th><label for="id_r_name"></label></th>
-					<td>
-						<input type="text" name="r_name" maxlength="20" id="id_r_name"
-							placeholder="미용실 이름을 입력하세요 ex) A미용실 OO점">
-					</td>
-				</tr>
-				<tr>
-					<th><label for="id_r_location"></label></th>
-					<td>
-						<input type="text" name="r_location" maxlength="20" id="id_r_location" sytle="display:inline"
-							placeholder="지역을 입력하세요 ex) OO구 OO동">
-					</td>
-				</tr>
-				<tr>
-					<th><label for="id_hashtags"></label></th>
-					<td>
-						<select name="hashtags" id="id_hashtags" multiple="" placeholder="#미용실 후기"></select>
-					</td>
-				</tr>
-			</tbody>
+			{{ form.as_table }}
 		</table>
 		<button class="r_write" type="submit">작성</button>
 	</form>

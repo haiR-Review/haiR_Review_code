@@ -79,15 +79,13 @@
 					<tbody>
 						<tr>
 							<td id="list_td">
-								<a style="text-decoration: none; color: rgb(111, 111, 111);"
-									href="{% url 'f_detail' frees.id %}">{{frees.p_title}}
-								</a>
+								<a href="{% url 'f_detail' frees.id %}">{{frees.p_title}}</a>
 							</td>
-							<td id="list_td">{{ frees.user}}</td>
+							<td id="list_td">{{ frees.user }}</td>
 							<td id="list_td">{{ frees.p_date|date:'Y.m.d' }}</td>
 							{{ free.p_update_counter}}
 							<td id="list_td">{{ frees.p_clicks }}</td>
-							<td id="list_td">{{ frees.p_like_count}}</td>
+							<td id="list_td">{{ frees.p_like_count }}</td>
 						</tr>
 					</tbody>
 					{% endfor %}

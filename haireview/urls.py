@@ -35,5 +35,6 @@ urlpatterns = [
     path('', include('QnA.urls')),
     path('', include('review.urls')),
     path('', include('bookmark.urls')),
+	path('summernote/', include('django_summernote.urls')),
 ]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 

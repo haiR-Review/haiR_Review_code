@@ -127,7 +127,6 @@ ul {
 	bottom: 0;
 	position: fixed;
 	margin-left: 12vw;
-    pointer-events: none;
 }
 
 .nav_mypage {
@@ -203,4 +202,28 @@ ul {
 	text-decoration: none;
 	color: #ffffff;
 	font-size: 1.5vw;
+}
+
+.profile_img {
+	width: 15vw;
+	height: auto;
+}
+
+.profile_frame {
+	overflow: hidden;
+	width: 10vw;
+	height: 10vw;
+	border-radius: 20%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+}
+
+.username {
+	position: absolute;
+	color: #ffffff;
+	font-family: 'GangwonEdu_OTFBoldA';
+	width: 3rem;
+	font-size: 2vw;
 }
