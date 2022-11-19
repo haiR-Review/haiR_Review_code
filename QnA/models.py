@@ -10,12 +10,16 @@ class Question(models.Model):
     hashtags = models.ManyToManyField('main.Hashtag' , blank = True)
     q_clicks = models.PositiveIntegerField(default=0, verbose_name='조회수') 
     q_likes = models.PositiveIntegerField(default=0, verbose_name='추천수')
+    q_title = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.q_title
     
     def __str__(self):
         return self.question
 
     def q_summary(self) : 
-        return self.question[:20]
+        return self.q_title[:20]
 
     @property
     def q_update_counter(self) :

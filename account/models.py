@@ -8,3 +8,4 @@ class Profile(models.Model):
     nickname = models.CharField(max_length=40, blank =True)
     introduction = models.TextField(blank=True)
     p_image = models.ImageField(upload_to = 'account/images', blank = True)
+    email = models.EmailField(max_length=30)

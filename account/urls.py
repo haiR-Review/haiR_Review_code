@@ -10,5 +10,6 @@ urlpatterns = [
     path('mypage/<str:username>/', views.mypage, name='mypage'),
     path('password/', views.password, name='password'),
     path('profile_edit/', views.profile_edit, name='profile_edit'),
+
     
 ]

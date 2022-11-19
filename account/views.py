@@ -21,7 +21,8 @@ def signup(request):
         signup_form = UserCreationForm(request.POST)
         if signup_form.is_valid():
             user = signup_form.save()
-            Profile.objects.create(user=user) #프로필 생성
+            email = request.POST["email"]
+            Profile.objects.create(user=user, email=email) #프로필 생성
             auth_login(request, user)
             return redirect('main')
     
