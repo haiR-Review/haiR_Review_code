@@ -79,7 +79,7 @@
 					<tbody>
                         <tr>
                             <td id="list_td">
-                                <a href="{% url 'q_detail' qnaobj.id %}">{{qnaobj.question}}</a>
+                                <a href="{% url 'q_detail' qnaobj.id %}">{{qnaobj.q_summary}}...</a>
                             </td>
                             <td id="list_td">{{ qnaobj.user }}</td>
                             <td id="list_td">{{ qnaobj.q_date|date:'Y.m.d' }}</td>

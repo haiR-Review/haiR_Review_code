@@ -80,7 +80,7 @@
 					<tbody>
                         <tr>
                             <td id="list_td">
-                                <a href="{% url 'r_detail' reviews.id %}">{{reviews.r_title}}</a>
+                                <a href="{% url 'r_detail' reviews.id %}"></a>{{reviews.r_summary}}...
                             </td>
                             <td id="list_td">{{ reviews.user }}</td>
                             <td id="list_td">{{ reviews.r_date|date:'Y.m.d' }}</td>

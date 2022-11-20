@@ -6,7 +6,7 @@ from django_summernote.widgets import SummernoteWidget
 class QuestionForm(forms.ModelForm):
     class Meta:
         model = Question
-        fields = ['question','q_photo', 'hashtags']
+        fields = ['q_title','question','q_photo', 'hashtags']
         widgets = {
             'question': SummernoteWidget(),
         }
