@@ -88,31 +88,35 @@
 	</div>
 
 	<div class="summary-collect">
+		<a href="{% url 'r_list' %}">
 		<div class="summary">
 			<p>리뷰 게시판 게시글</p>
 			{% for reviews in reviews.all %}
-			<a href="{% url 'r_detail' reviews.id %}">{{reviews.r_summary}}...
+			<a class="summary-p" href="{% url 'r_detail' reviews.id %}">{{reviews.r_summary}}...
 				{{reviews.r_date|date:'Y.m.d'}}</a><br>
 			{% endfor %}
 		</div>
-
-		<a href="{% url 'q_list' %}">
-			<div class="summary">
-				<p>QnA 게시판 게시글</p>
-				{% for qnaobj in qnaobj.all %}
-				<a href="{% url 'q_detail' qnaobj.id %}">{{qnaobj.q_summary}}...
-					{{ qnaobj.q_date|date:'Y.m.d' }}</a><br>
-				{% endfor %}
-			</div>
 		</a>
 
+		<a href="{% url 'q_list' %}">
+		<div class="summary">
+			<p>QnA 게시판 게시글</p>
+			{% for qnaobj in qnaobj.all %}
+			<a class="summary-p" href="{% url 'q_detail' qnaobj.id %}">{{qnaobj.q_summary}}...
+				{{ qnaobj.q_date|date:'Y.m.d' }}</a><br>
+			{% endfor %}
+		</div>
+		</a>
+
+		<a href="{% url 'f_list' %}">
 		<div class="summary">
 			<p>자유 게시판 게시글</p>
 			{% for frees in frees.all %}
-			<a href="{% url 'f_detail' frees.id %}">{{frees.p_summary}}...
+			<a class="summary-p" href="{% url 'f_detail' frees.id %}">{{frees.p_summary}}...
 				{{frees.p_date|date:'Y.m.d'}}</a><br>
 			{% endfor %}
 		</div>
+		</a>
 	</div>
 
 	<div class="main_bottom">
