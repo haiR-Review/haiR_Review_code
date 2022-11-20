@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Question(models.Model):    
+    q_title = models.CharField(max_length=200)
     question = models.TextField()
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     q_date = models.DateTimeField('data published')
@@ -15,10 +16,10 @@ class Question(models.Model):
     q_clicks = models.PositiveIntegerField(default=0, verbose_name='QnA_조회수')
     
     def __str__(self):
-        return self.question
+        return self.q_title
 
     def q_summary(self) : 
-        return self.question[:20]
+        return self.q_title[:15]
 
     @property
     def q_update_counter(self) :

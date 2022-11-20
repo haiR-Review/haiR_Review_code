@@ -42,7 +42,7 @@ def f_list(request):
         frees = Free.objects.all().order_by('-p_date')
 
      #페이지
-    paginator = Paginator(frees, 2)
+    paginator = Paginator(frees, 4)
     page = request.GET.get('page')
     frees = paginator.get_page(page)
     return render(request, 'f_list.html', {'frees':frees, 'f_sort':f_sort})

@@ -38,7 +38,7 @@ def q_list(request):
         qnaobj = Question.objects.all().order_by('-q_date')
     
     #페이지
-    paginator = Paginator(qnaobj, 2)
+    paginator = Paginator(qnaobj, 4)
     page = request.GET.get('page')
     qnaobj = paginator.get_page(page)
     return render(request, 'q_list.html' , {'qnaobj':qnaobj, 'q_sort':q_sort})

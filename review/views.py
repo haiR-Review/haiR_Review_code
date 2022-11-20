@@ -41,7 +41,7 @@ def r_list(request):
         reviews = Review.objects.all().order_by('-r_date')
 
     #페이지
-    paginator = Paginator(reviews, 2)
+    paginator = Paginator(reviews, 4)
     page = request.GET.get('page')
     reviews = paginator.get_page(page)
     return render(request, 'r_list.html', {'reviews':reviews, 'sort':r_sort})
