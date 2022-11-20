@@ -94,7 +94,7 @@
 		</div>
 	
 		<div class="summary">
-			<p>QnA 게시판 게시글</p>
+			<p>QnA 게시판 게시글 </p>
 			{% for qnaobj in qnaobj.all %}
 			<a href="{% url 'q_detail' qnaobj.id %}">{{qnaobj.q_summary}}...
 				{{ qnaobj.q_date|date:'Y.m.d' }}</a><br>
