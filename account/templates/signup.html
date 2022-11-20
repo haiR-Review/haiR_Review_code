@@ -18,7 +18,25 @@
         <div class="container">
             <form method="POST">
                 {% csrf_token %}
-                {{ signup_form }}
+                <div class="signup">
+                    <div class="id-input">아이디</div>
+                    <div class="signup-input">{{ signup_form.username }}</div>
+                </div>
+                <div class="word">150자 이하 문자, 숫자 그리고 @/./+/-/_만 가능합니다.</div>
+                <div class="signup">
+                    <div class="password-input">비밀번호</div>
+                    <div class="signup-input">{{ signup_form.password1 }}</div>
+                </div>
+                <div class="word">
+                    다른 개인 정보와 유사한 비밀번호는 사용할 수 없습니다.<br>
+                    비밀번호는 최소 8자 이상이어야 합니다.<br>
+                    통상적으로 자주 사용되는 비밀번호는 사용할 수 없습니다.<br>
+                    숫자로만 이루어진 비밀번호는 사용할 수 없습니다.
+                </div>
+                <div class="signup">
+                    <div class="password2-input">비밀번호 확인</div>
+                    <div class="signup-input">{{ signup_form.password2 }}</div>
+                </div>
                 <input class="signup-btn" type="submit" name="Submit" id="submit" value="회원가입">
             </form>
         </div>

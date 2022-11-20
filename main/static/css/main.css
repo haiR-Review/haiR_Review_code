@@ -221,7 +221,6 @@ p:hover {color:#FFBA00;}
     background-color: white;
     margin-right: 2vw;
     margin-left: 2vw;
-    /* background-color: #8F87A7; */
 }
 .summary:hover {
     background-color: #ffffff;
@@ -234,6 +233,10 @@ div a {
    text-decoration: none;
    font-family: 'Pretendard-Regular';
    color: rgb(111, 111, 111);
+}
+
+.summary-link {
+	cursor: pointer;
 }
 
 @media (max-width: 600px){
