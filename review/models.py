@@ -23,7 +23,7 @@ class Review(models.Model):
         return self.r_title
 
     def r_summary(self) : 
-        return self.r_title[:20]
+        return self.r_title[:15]
 
     @property
     def r_update_counter(self) :

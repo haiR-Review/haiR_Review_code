@@ -18,7 +18,7 @@ class Free(models.Model):
         return self.p_title
 
     def p_summary(self) :
-        return self.p_title[:20]
+        return self.p_title[:15]
     
     @property
     def p_update_counter(self) :
