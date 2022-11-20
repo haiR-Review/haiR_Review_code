@@ -19,13 +19,13 @@ body {
 
 /* 바탕 이미지 */
 .back_img_h {
-	grid-column: 2;
+   grid-column: 2;
     display: flex;
-	width: 42vw;
-	height: auto;
-	position: fixed;
+   width: 42vw;
+   height: auto;
+   position: fixed;
     bottom: 0;
-	margin-left: 50vw;
+   margin-left: 50vw;
     pointer-events: none;
 }
 
@@ -38,12 +38,22 @@ body {
     margin-top: 20vh;
 }
 
+/* form 컨테이너 */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width: 25vw;
+}
+
+/* 아이디, 비밀번호 input */
 #id_username, #id_password1, #id_password2 {
     background-color: #403964;
     border: none;
     margin-top: 6vh;
     float: right;
-    width: 200px;
+    width: 16vw;
     border-bottom: 1px solid white;
 }
 
@@ -59,6 +69,10 @@ body {
     margin-top: 6vh;
     cursor: pointer;
 }
+.signup-btn:hover {
+    color: #8F87A7;
+    background-color: #FFFFFF;
+}
 
 /* 불필요한 문구 없애기 */
 ul, span {
@@ -72,4 +86,21 @@ label {color: white;}
 input {
     outline: none;
     color: white;
+}
+
+@media (max-width: 600px) {
+
+    /* 전체 컨테이너 */
+    .signup-container {margin-top: 22vh;}
+
+    /* form 컨테이너 */
+    .container {width: 70vw;}
+
+    /* 아이디, 비밀번호 input */
+    #id_username,
+    #id_password1,
+    #id_password2 {width: 45vw;}
+
+    /* 회원가입 버튼 */
+    .signup-btn {width: 70vw;}
 }
