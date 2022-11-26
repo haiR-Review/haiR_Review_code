@@ -129,12 +129,15 @@ input {
 
     /* 로고 이미지 */
     .login-img {
-        width: 50vw;
-        height: 10vh;
+        width: 45vw;
+        height: auto;
     }
 
     /* 전체 컨테이너 */
-    .login-container {margin-top: 22vh;}
+    .login-container {
+        margin-top: 22vh;
+        padding: 0;
+    }
 
     /* form 컨테이너 */
     .container {width: 70vw;}
@@ -160,3 +163,29 @@ input {
     font-family: 'GangwonEdu_OTFBoldA';
     color: white;
 }
+
+/* 아이패드용 */
+/* @media (min-width: 700px) {
+
+    .login-img {
+        width: 45vw;
+        height: auto;
+    }
+
+    .login-container {
+        margin-top: 15vh;
+        padding: 0;
+    }
+
+    .container {width: 70vw;}
+
+    .container2 {width: 70vw;}
+
+    #id_username,
+    #id_password {
+        width: 45vw;
+        height: 2vh;
+    }
+
+    .login-btn {width: 70vw;}
+} */

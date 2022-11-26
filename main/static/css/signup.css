@@ -98,7 +98,8 @@ input {
 
     /* 전체 컨테이너 */
     .signup-container {
-        margin-top: 22vh;
+        padding: 0;
+        margin-top: 14vh;
     }
 
     /* form 컨테이너 */
@@ -117,6 +118,9 @@ input {
     .signup-btn {
         width: 70vw;
     }
+
+    /* 유효성 검사 */
+    .word {font-size: 3vw;}
 }
 
 .signup {
